@@ -9,10 +9,10 @@ model Game {
 }
 
 model Player {
-  id       Int    @id @default(autoincrement())
-  username String @unique
-  email    String @unique
-  amount   Int
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  email    String  @unique
+  amount   Decimal @db.Money @default(0)
   spins    Spin[]
 
   @@map("players")
@@ -25,9 +25,9 @@ model Spin {
   game          Game     @relation(fields: [game_id], references: [id])
   game_id       Int
   timestamp     DateTime @default(now())
-  bet_amount    Int
-  result_amount Int
-  result        String
+  bet_amount    Decimal @db.Money @default(1)
+  result_amount Decimal @db.Money
+  result        Json
 
   @@map("spins")
 }

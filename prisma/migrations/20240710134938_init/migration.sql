@@ -13,7 +13,7 @@ CREATE TABLE "players" (
     "id" SERIAL NOT NULL,
     "username" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "amount" INTEGER NOT NULL,
+    "amount" MONEY NOT NULL DEFAULT 0,
 
     CONSTRAINT "players_pkey" PRIMARY KEY ("id")
 );
@@ -24,9 +24,9 @@ CREATE TABLE "spins" (
     "player_id" INTEGER NOT NULL,
     "game_id" INTEGER NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "bet_amount" INTEGER NOT NULL,
-    "result_amount" INTEGER NOT NULL,
-    "result" TEXT NOT NULL,
+    "bet_amount" MONEY NOT NULL DEFAULT 1,
+    "result_amount" MONEY NOT NULL,
+    "result" JSONB NOT NULL,
 
     CONSTRAINT "spins_pkey" PRIMARY KEY ("id")
 );
