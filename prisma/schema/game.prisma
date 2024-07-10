@@ -1,0 +1,33 @@
+model Game {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  rules       String?
+  spins       Spin[]
+
+  @@map("games")
+}
+
+model Player {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  email    String @unique
+  amount   Int
+  spins    Spin[]
+
+  @@map("players")
+}
+
+model Spin {
+  id            Int      @id @default(autoincrement())
+  player        Player   @relation(fields: [player_id], references: [id])
+  player_id     Int
+  game          Game     @relation(fields: [game_id], references: [id])
+  game_id       Int
+  timestamp     DateTime @default(now())
+  bet_amount    Int
+  result_amount Int
+  result        String
+
+  @@map("spins")
+}
