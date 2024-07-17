@@ -5,6 +5,8 @@ import { PlayerModule } from './player/player.module';
 import { BookmarkModule } from './bookmark/bookmark.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { SpinResultModule } from './spin-result/spin-result.module';
+import { UserController } from './user/user.controller';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { SpinResultModule } from './spin-result/spin-result.module';
     BookmarkModule,
     PrismaModule,
     SpinResultModule,
+    UserModule,
   ],
+  controllers: [UserController],
 })
 export class AppModule {}

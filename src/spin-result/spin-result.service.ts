@@ -6,15 +6,15 @@ type SymbolType = (typeof symbols)[number];
 
 @Injectable()
 export class SpinResultService {
-  private readonly spinResult: SymbolType[][] = [[], [], []];
+  private readonly spinResult: SymbolType[][] = [[], [], [], []];
 
   static getRandomFruit() {
     return symbols[Math.floor(Math.random() * symbols.length)];
   }
 
   getSpinResult(): { data: SymbolType[][] } {
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
         this.spinResult[i][j] = SpinResultService.getRandomFruit();
       }
     }
